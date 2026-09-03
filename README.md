@@ -18,3 +18,5 @@
 
 5. AI Tool/Workflow
 
+I plan to use ChatGPT,Claude and possibly Copilot to help me understand course instructions, coding, Git, GitHub, and VS Code.
+
