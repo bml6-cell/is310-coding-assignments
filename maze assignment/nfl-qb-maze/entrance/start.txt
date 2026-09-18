@@ -1,0 +1,8 @@
+WELCOME TO THE NFL QB MAZE!
+Match three quarterbacks to their teams. All the answers are in the clues.
+
+First QB: Patrick Mahomes plays for the Kansas City Chiefs.
+Go to the chiefs folder and read its clue. Type one line at a time:
+
+cd ../chiefs
+cat clue.txt

@@ -1,0 +1,7 @@
+CORRECT! Patrick Mahomes plays for the Kansas City Chiefs.
+
+Next QB: Josh Allen plays for the Buffalo Bills.
+Go to the bills folder:
+
+cd ../bills
+cat clue.txt

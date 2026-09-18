@@ -1,0 +1,7 @@
+YOU FOUND THE HIDDEN CLUE!
+
+Next QB: Joe Burrow plays for the Cincinnati Bengals.
+Go to the bengals folder:
+
+cd ../bengals
+cat clue.txt

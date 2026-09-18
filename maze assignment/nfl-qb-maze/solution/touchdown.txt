@@ -1,0 +1,11 @@
+TOUCHDOWN! MAZE SOLVED!
+
+Patrick Mahomes -> Kansas City Chiefs
+Josh Allen -> Buffalo Bills
+Joe Burrow -> Cincinnati Bengals
+
+Completion code: QB-TOUCHDOWN
+
+NFL teams are part of fan culture. A roster turns players and their
+team connections into data. These matches are a snapshot from
+September 17, 2026, because players can change teams.

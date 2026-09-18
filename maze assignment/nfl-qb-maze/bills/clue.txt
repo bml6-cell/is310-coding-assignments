@@ -1,0 +1,10 @@
+CORRECT! Josh Allen plays for the Buffalo Bills.
+
+There is a hidden clue here called .next-qb.txt.
+The dot at the start of its name hides it on Mac/Linux.
+
+Mac/Linux: type ls -la to see it.
+PowerShell: type Get-ChildItem -Force to see it.
+
+Then read it:
+cat .next-qb.txt
