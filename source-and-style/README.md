@@ -38,4 +38,4 @@ This archive shows how digitization depends on both cultural and technical work.
 
 ## AI assistance
 
-I used Codex to help locate the archive, inspect its browser-visible pages and resource references, research its credits, and draft this assessment. The relevant prompt and a summary of the assistance are recorded in [ai-chat-log.md](ai-chat-log.md).
+I used Codex to help locate the archive, inspect its browser-visible pages and resource references, research its credits, and draft this assessment.
