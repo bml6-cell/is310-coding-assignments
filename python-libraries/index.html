@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Video Game Data Entry</title>
+<style>
+:root {font-family:system-ui,sans-serif;color:#182b38;background:#edf2f5;line-height:1.6}
+body {max-width:900px;margin:auto;padding:32px 20px} h1,h2 {line-height:1.2} .card {background:white;padding:24px;border-radius:14px;margin:24px 0;border:1px solid #cbd6de} label {display:block;font-weight:600;margin-top:16px} input {box-sizing:border-box;width:100%;padding:12px;font:inherit;border:1px solid #7b8c98;border-radius:6px} button {font:inherit;padding:10px 18px;border-radius:6px;border:1px solid #245a76;background:#245a76;color:white;cursor:pointer;margin:16px 8px 0 0} button.secondary {background:white;color:#245a76} button:disabled {opacity:.5;cursor:default} :focus-visible {outline:3px solid #d47908;outline-offset:3px} table {width:100%;border-collapse:collapse} th,td {padding:12px;text-align:left;border-bottom:1px solid #dbe2e7;overflow-wrap:anywhere} .scroll {overflow-x:auto} small {color:#485c6a} [hidden] {display:none!important}
+</style>
+</head>
+<body>
+<header><small>IS310 · Cultural data curation</small><h1>Video Game Data Entry</h1><p>Build a collection of games, release years, and revenue figures. Review each entry before adding it, then download your collection.</p></header>
+<section class="card"><h2>Example record</h2><p>Minecraft · 2011 · $4.2 billion (estimated direct sales)</p><small>This is an illustrative estimate, not an official lifetime total. Include the period, currency, and estimate label when known.</small></section>
+<section class="card"><h2>Add a game</h2>
+<form id="entry-form">
+<label for="game">Game</label><input id="game" required maxlength="200" autocomplete="off">
+<label for="year">Release year</label><input id="year" required inputmode="numeric" pattern="[0-9]{4}" maxlength="4" aria-describedby="year-help"><small id="year-help">Use a four-digit year, such as 2011.</small>
+<label for="revenue">Revenue</label><input id="revenue" required maxlength="250" placeholder="$3.5 billion (arcade revenue through 1999)" aria-describedby="revenue-help"><small id="revenue-help">Keep currency, time period, and source scope clear. Figures are not automatically verified.</small>
+<button type="submit">Review entry</button>
+</form>
+<div id="review" hidden><h3>Is this entry correct?</h3><p id="review-text"></p><button id="confirm" type="button">Confirm and add</button><button id="edit" class="secondary" type="button">Edit entry</button></div>
+<p id="status" role="status" aria-live="polite"></p>
+</section>
+<section class="card"><h2>Your collection</h2><p id="count">0 records added. Add at least two records to complete the exercise.</p><div class="scroll"><table><thead><tr><th scope="col">Game</th><th scope="col">Release year</th><th scope="col">Revenue</th></tr></thead><tbody id="records"></tbody></table></div><button id="download" type="button" disabled>Download CSV</button><p><small>Entries stay in this page only. Download your CSV before closing or refreshing. Your browser controls the download location.</small></p></section>
+<script>
+const form = document.querySelector('#entry-form');
+const fields = ['game', 'year', 'revenue'].map(id => document.getElementById(id));
+const review = document.querySelector('#review');
+const status = document.querySelector('#status');
+const records = [];
+let pending = null;
+form.addEventListener('submit', event => {
+  event.preventDefault();
+  for (const field of fields) {
+    field.value = field.value.trim();
+    field.setCustomValidity(field.value ? '' : 'Please enter a value.');
+  }
+  if (!form.reportValidity()) return;
+  pending = fields.map(field => field.value);
+  document.querySelector('#review-text').textContent = pending.join(' · ');
+  form.hidden = true;
+  review.hidden = false;
+  document.querySelector('#confirm').focus();
+});
+fields.forEach(field => field.addEventListener('input', () => field.setCustomValidity('')));
+document.querySelector('#edit').addEventListener('click', () => {
+  pending = null;
+  review.hidden = true;
+  form.hidden = false;
+  fields[0].focus();
+});
+document.querySelector('#confirm').addEventListener('click', () => {
+  if (!pending) return;
+  records.push(pending);
+  const row = document.createElement('tr');
+  for (const value of pending) {
+    const cell = document.createElement('td');
+    cell.textContent = value;
+    row.appendChild(cell);
+  }
+  document.querySelector('#records').appendChild(row);
+  pending = null;
+  form.reset();
+  review.hidden = true;
+  form.hidden = false;
+  document.querySelector('#count').textContent = `${records.length} record${records.length === 1 ? '' : 's'} added.`;
+  document.querySelector('#download').disabled = false;
+  status.textContent = 'Entry added. You can enter another game or download your collection.';
+  fields[0].focus();
+});
+function csvCell(value) {
+  // Prevent spreadsheet formulas when opening user-supplied data in Excel.
+  const safe = /^[=+@\-\t\r]/.test(value) ? "'" + value : value;
+  return '"' + safe.replaceAll('"', '""') + '"';
+}
+document.querySelector('#download').addEventListener('click', () => {
+  const csv = [['Game', 'Release year', 'Revenue'], ...records].map(row => row.map(csvCell).join(',')).join('\r\n') + '\r\n';
+  const url = URL.createObjectURL(new Blob([csv], {type: 'text/csv;charset=utf-8;'}));
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'preferred-games.csv';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  status.textContent = 'CSV download requested. Check your browser downloads.';
+});
+</script>
+</body>
+</html>
