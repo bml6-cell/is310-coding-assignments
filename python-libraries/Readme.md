@@ -54,4 +54,20 @@ Revenue figures are stored as entered. The program does not verify their accurac
 
 See `ai-chat-log.md` for relevant AI prompts and responses. AI helped draft this README and explain the assignment requirements.
 
-AI also helped troubleshoot code and repair the Git repository. Under the assignment’s AI-assisted pathway, an equivalent HTML interface and a comparison are still required before submission.
+AI also helped troubleshoot code, repair the Git repository, and create the HTML interface and this comparison. See the AI log for details.
+
+## Run the HTML Interface
+
+Open `python-libraries/index.html` in a web browser (double-click it in Finder). No installation or server is needed.
+
+Enter a game, four-digit release year, and revenue. Select **Review entry**, then **Confirm and add** or **Edit entry**. Repeat for at least two games. Select **Download CSV** to save the confirmed records. The browser chooses the download location. Refreshing or closing the page clears entries, so download first.
+
+## Interface Comparison
+
+The CLI guides users through one question at a time and saves a CSV automatically after they finish. It requires Python, Rich, and a terminal. The HTML version shows all fields together and keeps the collection visible, making it easier to review several entries. It requires a manual download and does not preserve entries after a refresh.
+
+Both versions collect game names, release years, and revenue and ask for confirmation. The HTML version adds required-field checks and a four-digit year check. Its revenue hint asks users to include currency, period, and whether a figure is estimated. The CLI accepts free-form text with fewer checks. Neither interface verifies revenue accuracy, and figures with different time periods or scopes should not be compared directly.
+
+AI generated the HTML, CSS, and JavaScript, including review and edit controls, validation, and CSV export. The existing game fields were retained from the CLI. AI also drafted these instructions and tested the workflow. No rejected HTML proposals or user-authored revisions are recorded at this point.
+
+For a casual user collecting video game information, the browser interface is likely the better fit because it needs no Python setup and displays the collection while entries are added. The CLI fits users already comfortable working in a terminal. This comparison describes the interfaces; it does not claim that classmates have tested them.
