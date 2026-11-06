@@ -17,8 +17,7 @@ HEADERS = {
 }
 
 WANTED_MOBS = [
-    "Cow", "Axolotl", "Creeper", "Warden", "Enderman",
-    "Piglin", "Spider", "Slime", "Ghast", "Shulker", "Phantom"
+    "Cow", "Axolotl", "Creeper", "Warden", "Enderman", "Shulker", "Phantom"
 ]
 
 
