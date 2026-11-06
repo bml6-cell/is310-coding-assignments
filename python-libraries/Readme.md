@@ -18,7 +18,7 @@ If you already have a course virtual environment, activate that environment inst
 Install the required packages:
 
 ```bash
-python -m pip install -r requirements.txt
+python -m pip install -r python-libraries/requirements.txt
 ```
 
 ## Run the Program
@@ -36,7 +36,7 @@ For each game:
 3. Type `yes` to confirm it or `no` to enter it again.
 4. Type `yes` when asked to add another game, or `no` to finish.
 
-The program then displays a table of the confirmed entries and saves them to `User's preferred games.csv` in the folder where you ran the command.
+The program then displays a table of the confirmed entries and saves them to `User's preferred games.csv` in the `python-libraries` folder, and prints its full path.
 
 ## Data Format
 
@@ -53,3 +53,5 @@ Revenue figures are stored as entered. The program does not verify their accurac
 ## AI Use
 
 See `ai-chat-log.md` for relevant AI prompts and responses. AI helped draft this README and explain the assignment requirements.
+
+AI also helped troubleshoot code and repair the Git repository. Under the assignment’s AI-assisted pathway, an equivalent HTML interface and a comparison are still required before submission.

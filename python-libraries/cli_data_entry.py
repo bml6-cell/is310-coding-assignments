@@ -1,4 +1,5 @@
 import csv
+from pathlib import Path
 from rich.console import Console
 from rich.table import Table
 
@@ -50,8 +51,11 @@ for i in range(len(game)):
 console.print(user_table)
 
 
-with open('User\'s preferred games.csv', 'wt') as outfile:
+output_path = Path(__file__).resolve().parent / "User's preferred games.csv"
+with output_path.open('w', newline='', encoding='utf-8') as outfile:
     writer = csv.writer(outfile)
     writer.writerow(["Game", "Release year", "Revenue"])
     for i in range(len(game)):
         writer.writerow([game[i], release_year[i], revenue[i]])
+
+console.print(f"Data saved to: {output_path}")
