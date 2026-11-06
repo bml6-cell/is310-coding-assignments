@@ -58,4 +58,4 @@ with output_path.open('w', newline='', encoding='utf-8') as outfile:
     for i in range(len(game)):
         writer.writerow([game[i], release_year[i], revenue[i]])
 
-console.print(f"Data saved to: {output_path}")
+print(f"Data saved to: {output_path}")
